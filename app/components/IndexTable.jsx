@@ -120,7 +120,16 @@ function ProductRow({ product, index, onError, onSuccess }) {
     <IndexTable.Row id={id} position={index}>
       <IndexTable.Cell>
         <Text as="span" fontWeight="bold">
-          {title}
+          <span
+            onClick={() => {
+              open(
+                `shopify://admin/products/${id.replace("gid://shopify/Product/", "")}`,
+                "_top",
+              );
+            }}
+          >
+            {title}
+          </span>
         </Text>
       </IndexTable.Cell>
       <IndexTable.Cell>{priceDisplay}</IndexTable.Cell>
