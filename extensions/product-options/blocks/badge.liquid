@@ -1,0 +1,49 @@
+
+{% assign show_badge = false %}
+{% assign product_tags = product.tags | join: ',' %}
+{% assign tag_to_show = block.settings.show_on_tag | downcase %}
+
+{% if product_tags != blank  and tag_to_show != blank  and product_tags contains tag_to_show %}
+  {% assign show_badge = true %}
+{% endif %}
+
+{% if show_badge %}
+  <div class="badge" style="background-color: {{ block.settings.badge_color }}; color: {{ block.settings.badge_text_color }};">
+    {{ block.settings.badge_text }}
+  </div>
+{% endif %}
+
+
+{% schema %}
+  {
+    "name": "Badge",
+    "target": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "badge_text",
+        "label": "Badge Text",
+        "default": "🌟 Limited Edition!"
+      },
+      {
+        "type": "color",
+        "id": "badge_color",
+        "label": "Badge Color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "badge_text_color",
+        "label": "Badge Text Color",
+        "default": "#000000"
+      },
+      {
+        "type": "text",
+        "id": "show_on_tag",
+        "label": "Show on Tag Equals",
+        "info": "Enter the tag name to show the badge on the product page. For example, 'limited-edition' will show the badge on products with that tag.",
+        "default": "limited-edition"
+      }
+    ]
+  }
+{% endschema %}
