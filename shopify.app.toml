@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "7c74fae02f75f49d6b58994f7716d5ee"
-application_url = "https://codeninja-productoption.fdxqz1.easypanel.host/"
+application_url = "https://codeninja-productoption.fdxqz1.easypanel.host"
 embedded = true
 name = "ProductOption"
 handle = "productoption-1"
@@ -27,9 +27,9 @@ scopes = "write_products, read_themes"
 
 [auth]
 redirect_urls = [
-  "https://codeninja-productoption.fdxqz1.easypanel.host//auth/callback",
-  "https://codeninja-productoption.fdxqz1.easypanel.host//auth/shopify/callback",
-  "https://codeninja-productoption.fdxqz1.easypanel.host//api/auth/callback"
+  "https://codeninja-productoption.fdxqz1.easypanel.host/auth/callback",
+  "https://codeninja-productoption.fdxqz1.easypanel.host/auth/shopify/callback",
+  "https://codeninja-productoption.fdxqz1.easypanel.host/api/auth/callback"
 ]
 
 [pos]
