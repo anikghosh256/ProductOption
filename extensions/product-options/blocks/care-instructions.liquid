@@ -1,0 +1,17 @@
+<div>
+  {% if product.metafields.custom.care_instructions != blank %}
+    <div>
+      <h3>Care Instructions</h3>
+      <p>{{ product.metafields.custom.care_instructions  | metafield_tag }}</p>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Care Instructions",
+    "target": "section",
+    "settings": [
+    ]
+  }
+{% endschema %}
