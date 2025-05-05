@@ -1,0 +1,119 @@
+
+{% if product.metafields.custom.size_chart != blank %}
+<div class="size-chart-popup" style="display: none;">
+  <div class="size-chart-popup-content">
+    <div class="size-chart-popup-header">
+      <h2>Size Chart</h2>
+      <button class="close-popup">X</button>
+    </div>
+    <div class="size-chart-popup-body">
+        {{ product.metafields.custom.size_chart  | metafield_tag  }}
+    </div>
+  </div>
+  <div class="size-chart-popup-overlay"> </div>
+</div>
+
+<div class="size-chart-button">
+  <button class="open-popup">View Size Chart</button>
+</div>
+
+{% endif %}
+
+<style>
+  .size-chart-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  .size-chart-popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+  }
+  .size-chart-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .size-chart-popup-body {
+    margin-top: 10px;
+    max-width: 100%;
+  }
+
+  .size-chart-popup-body img {
+    max-width: 100%;
+  }
+  .size-chart-popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+  .size-chart-button {
+    margin-top: 20px;
+  }
+  .size-chart-button button {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .size-chart-button button:hover {
+    background-color: #030a11;
+  }
+  .close-popup {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .close-popup:hover {
+    color: red;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const openPopupButton = document.querySelector('.open-popup');
+    const closePopupButton = document.querySelector('.close-popup');
+    const sizeChartPopup = document.querySelector('.size-chart-popup');
+    const overlay = document.querySelector('.size-chart-popup-overlay');
+
+    openPopupButton.addEventListener('click', function() {
+      sizeChartPopup.style.display = 'block';
+    });
+
+    closePopupButton.addEventListener('click', function() {
+      sizeChartPopup.style.display = 'none';
+    });
+
+    overlay.addEventListener('click', function() {
+      sizeChartPopup.style.display = 'none';
+    });
+  });
+</script>
+
+
+{% schema %}
+  {
+    "name": "Size Chart Popup",
+    "target": "section",
+    "settings": []
+  }
+{% endschema %}
